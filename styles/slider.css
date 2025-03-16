@@ -1,0 +1,58 @@
+
+/* Parte 1: Slider de WhatsApp */
+.whatsapp-slider {
+    margin-bottom: 50px;
+    width: 100%;
+    max-width: 900px;
+    height: var(--height);
+    overflow: hidden;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 10% 90%,
+      transparent
+    );
+    border-radius: 15px;
+  }
+  
+  @media (max-width: 700px) {
+  .whatsapp-slider {
+      position: relative; /* Asegura que el contenedor padre no lo limite */
+      left: 0; /* Alinea al borde izquierdo de la pantalla */
+      right: 0; /* Alinea al borde derecho de la pantalla *//* Centra el contenedor para ocupar todo el ancho */
+      width: 100vw;
+      }
+  }
+  
+  .slider {
+    display: flex;
+    width: 100%;
+    min-width: calc(var(--width) * var(--quantity));
+    position: relative;
+    gap: 20px;
+  }
+  
+  .slider .slide {
+    width: var(--width);
+    height: var(--height);
+    position: absolute;
+    flex-shrink: 0;
+    left: 60%;
+    animation: autoRun 15s linear infinite;
+    animation-delay: calc((15s / var(--quantity)) * (var(--position) - 1));
+  }
+  
+  .slide img {
+    width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+  }
+  
+  @keyframes autoRun {
+      from {
+          left: 100%;
+      }
+      to {
+          left: calc(var(--width) * -1);
+      }
+  }
